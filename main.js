@@ -8,7 +8,8 @@ function createGrid() {
       let div = document.createElement("div");
       div.style.height = `${1000 / n}px`;
       div.style.width = `${1000 / n}px`;
-      //   div.style.border = " 1px solid red";
+      div.style.opacity = "0";
+      div.style.border = " 1px solid red";
       div.className = "grid-ele";
       gridContainer.appendChild(div);
     }
@@ -21,4 +22,11 @@ createGridButton.addEventListener("click", createGrid);
 const gridContainer = document.querySelector("#grid");
 gridContainer.addEventListener("mouseover", function (e) {
   e.target.style.backgroundColor = "red";
+  let oldOpacity = parseFloat(e.target.style.opacity);
+  oldOpacity = oldOpacity + 0.1;
+  if (oldOpacity > 1) {
+    e.target.style.opacity = "1";
+  } else {
+    e.target.style.opacity = oldOpacity;
+  }
 });
